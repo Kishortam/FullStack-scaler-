@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Synchronous behavoiour in JS</h1>
+
+    <script>
+        console.log('1');
+        console.log('2');
+        for(var i = 10; i < 15; i++){
+            console.log(i);
+        }
+        console.log('3');   
+
+        // 1 2 10 11 13 14 3
+    </script>
+
+    <!-- 
+        it's a sync example, in which code executes line by line.
+        if function comes in between it will complete it first and the execute next code
+     -->
+</body>
+</html>

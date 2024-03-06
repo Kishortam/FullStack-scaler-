@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+
+    <script>
+
+        // debounce
+
+        // const input = document.querySelector('input');
+
+        // const fn = function(e){
+        //     console.log(e.target.value);
+        // }
+
+        // function debounce(fn, delay){
+        //     let timeoutRef;
+
+        //     return function(e){
+        //         clearTimeout(timeoutRef);
+        //         timeoutRef = setTimeout(() => {
+        //          fn(e);   
+        //         }, delay);
+        //     }
+        // }
+
+        // const debouncedFn = debounce(fn, 1000);
+
+        // input.addEventListener('keyup', debouncedFn);
+
+
+
+
+
+
+        // throttle
+
+        function throttle(fn, delay){
+            let timeoutRef;
+            let flag = true;
+
+            return function(e){
+                clearTimeout(timeoutRef);
+                if(flag){
+                    flag = false;
+                    setTimeout(() => {
+                        fn(e);
+                        flag = true;
+                    }, delay);
+                }
+            }
+        }
+
+        const input = document.querySelector('input');
+
+        const fn = function(e){
+            console.log(e.target.value);
+        }
+
+        const throttledfn = throttle(fn, 1000);
+
+        input.addEventListener('keyup', throttledfn);
+
+    </script>
+</body>
+</html>

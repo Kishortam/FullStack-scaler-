@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Multiplication Table</h1>
+    <div>
+        <input type="number" name="" id="num1" value="3">
+        X
+        <input type="number" name="" id="num2" value="2">
+        =
+        <span id="result">6</span>
+    </div>
+
+
+    <!--  practice : create an addition table -->
+    <h1>Multi Table</h1>
+    <input type="number" name="" id="numb1">
+    x
+    <input type="number" name="" id="numb2">
+    = 
+    <span id="res1"></span>
+
+
+
+
+    <script>
+        const num1Ref = document.getElementById('num1');
+        const num2Ref = document.getElementById('num2');
+        const resultRef = document.getElementById('result');
+
+        function updateProduct(){
+            const num1 = num1Ref.value;
+            const num2 = num2Ref.value;
+            resultRef.innerText = num1 * num2;
+        }
+
+        num1Ref.addEventListener('change', function(){
+            updateProduct();
+        });
+        num2Ref.addEventListener('change', function(){
+            updateProduct();
+        });
+
+
+
+        // practice : multi
+         const ref1 = document.getElementById('numb1');
+         const ref2 = document.getElementById('numb2');
+         const total = document.getElementById('res1');
+
+         function totalAmount(){
+            const value1 = ref1.value;
+            const value2 = ref2.value;
+            total.innerText = ((value1) * (value2));
+         }
+
+         ref1.addEventListener('change', function(){
+            totalAmount();
+         });
+         ref2.addEventListener('change', function(){
+            totalAmount();
+         });
+
+    </script>
+</body>
+</html>

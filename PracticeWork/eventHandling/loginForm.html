@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="username"></label>
+    <input type="text" name="username" id="username">
+    <label for="pass"></label>
+    <input type="password" name="pass" id="pass">
+    <button>submit</button>
+</body>
+
+<script>
+    // on buttin clicked it shows a message
+    // function handleSubmit(){
+    //     console.log('form submitted');
+    // }
+
+    const butRef = document.querySelector('button');
+    const userRef = document.querySelector('#username');
+    const passRef = document.querySelector('#pass');
+
+    butRef.addEventListener('click', function(e){
+        e.preventDefault();
+        console.log(userRef.value, passRef.value);
+    })
+
+
+
+    //--
+
+    butRef.addEventListener('click', function(e){
+        console.log('why you clicked this button')
+    })
+</script>
+</html>

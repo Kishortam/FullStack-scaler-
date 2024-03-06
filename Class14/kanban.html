@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+        
+        :root{
+            --medium-gray : rgb(219, 195, 195);
+            --p1 : lightpink;
+            --p2 : lightgreen;
+            --p3 : lightblue;
+            --p4 : black;
+        }
+        header{
+            display: flex;
+            width: 100%;
+            height: 60px;
+            background-color: var(--medium-gray);
+            padding: 10px;
+        }
+        .category-wrapper{
+            display: flex;
+            padding: 10px;
+            background-color: grey;
+            margin-left: 50px;
+            gap: 10px;
+        }
+        .category{
+            width: 50px;
+            height: 30px;
+            box-sizing: border-box;
+        }
+        .category:hover{
+            border: 2px solid white;
+        }
+         
+        .p1{
+            background-color: var(--p1);
+        }
+        .p2{
+            background-color: var(--p2);
+        }
+        .p3{
+            background-color: var(--p3);
+        }
+        .p4{
+            background-color: var(--p4);
+        }
+        [data-priority="p1"]{
+            background-color: var(--p1);
+        }
+        [data-priority="p2"]{
+            background-color: var(--p2);
+        }
+        [data-priority="p3"]{
+            background-color: var(--p3);
+        }
+        [data-priority="p4"]{
+            background-color: var(--p4);
+        }
+
+        .action-wrapper{
+            display: flex;
+            padding: 5px;
+            margin-left: 50px;
+            background-color: grey;
+            cursor: pointer;
+        }
+        .action-wrapper .action{
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: white;
+        }
+        .action-wrapper .action:hover{
+            background-color: yellowgreen;
+        }
+        /* .action-wrapper .add{
+            color: white;
+        } */
+        .action-wrapper .delete .enabled{
+            color: red;
+        }
+
+        .modal{
+            background-color: rgb(251, 236, 231);
+            /* margin-top: 300px; */
+            width: 50%;
+            min-width: 400px;
+            min-height: 300px;
+            position: fixed;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+        }
+        .modal .hide{
+            display: none;
+        }
+        .left-section{
+            flex-grow: 1;
+        }
+        .right-section{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            justify-content: space-between;
+        }
+        .right-section .selected{
+            border: 1px solid red;
+        }
+        .left-section textarea{
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        .tasks-wrapper{
+            display: block;
+            margin: 10px;
+        }
+        .tasks-wrapper .task{
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+            position: relative;
+        }
+        .tasks-wrapper .task .hide{
+            display: none;
+        }
+        .tasks-wrapper .task .task-category{
+            width: 100%;
+            height: 20px;
+            /* background-color: maroon; */
+        }
+        .tasks-wrapper .task .task-id{
+            width: 100%;
+            height: 20px;
+            padding: 5px;
+            background-color: aquamarine;
+            box-sizing: border-box;
+        }
+        .tasks-wrapper .task .task-title{
+            width: 100%;
+            height: 100px;
+            background-color: rgb(191, 177, 205);
+        }
+        .tasks-wrapper .task .task-title textarea{
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            pointer-events: none;
+        }
+        .task-delete-icon{
+            position: absolute;
+            right: 5px;
+            bottom: 13px;
+            cursor: pointer;
+            display: none;
+        }
+        .tasks-wrapper[data-delete-disabled="false"].task .task-delete-icon{
+            display: block;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="category-wrapper">
+            <div class="category" data-priority="p1"></div>
+            <div class="category" data-priority="p2"></div>
+            <div class="category" data-priority="p3"></div>
+            <div class="category" data-priority="p4"></div>
+        </div>
+
+        <div class="action-wrapper">
+            <div class="action add">+</div>
+            <div class="action delete enabled">X</div>
+        </div>
+    </header>
+
+    <section class="tasks-wrapper" data-delete-disabled="false">
+        <div class="task hide">
+            <!-- this all elements will create by using JS on createTaks() -->
+            <!-- <div class="task-category"></div>
+            <div class="task-id"></div>
+            <div class="task-title"></div> -->
+        </div>
+    </section>
+
+    <div class="modal hide">
+        <div class="left-section">
+            <textarea name="" id="" cols="30" rows="10" placeholder="enter your task"></textarea>
+        </div>
+        <div class="right-section">
+            <div class="category p1 selected" data-category="p1"></div>
+            <div class="category p2" data-category="p2"></div>
+            <div class="category p3" data-category="p3"></div>
+            <div class="category p4" data-category="p4"></div>
+        </div>
+    </div>
+
+    <script src="kanban.js"></script>
+</body>
+</html>

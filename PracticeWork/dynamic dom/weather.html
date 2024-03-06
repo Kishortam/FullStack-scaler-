@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .container{
+            width: 400px;
+            background-color: antiquewhite;
+            margin: 80px auto;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        #enterLocation{
+            width: 70%;
+            border: none;
+            padding: 7px;
+            font-size: 17px;
+            border-radius: 5px;
+        }
+        .search{
+            padding: 8px;
+            width: 80px;
+            border: none;
+            background-color: rgb(205, 237, 205);
+            color: black;
+            border-radius: 5px;
+        }
+        .search:hover{
+            background-color: rgb(80, 207, 80);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="findSection">
+            <input type="text" name="location" id="enterLocation" placeholder="enter your location">
+            <button type="submit" class="search">Search</button>
+        </div>
+        <div class="cityInfo">
+            <h2 class="city">New Delhi</h2>
+            <p class="date">date-time</p>
+        </div>
+        <div class="icon-logo">
+            <div class="icon"><img src="" alt=""></div>
+            <h3 class="condition">rain</h3>
+            <h2 class="temp">34</h2>
+            <p class="degree">Degree Celcius</p>
+        </div>
+    </div>
+
+    <script>
+        const buttonRef = document.querySelector('.search');
+        const inputRef = document.querySelector('#enterLocation');
+        const cityRef = document.querySelector('.city');
+        const dateRef = document.querySelector('.date');
+        const iconRef = document.querySelector('.icon img');
+        const conditionRef = document.querySelector('.condition');
+        const tempRef = document.querySelector('.temp');
+
+        buttonRef.addEventListener('click', function(e){
+            e.preventDefault();
+            fetchData(inputRef.value);
+            //console.log(inputRef.value);
+        })
+
+        function fetchData(location){
+            fetch(`http://api.weatherapi.com/v1/current.json?key=14c86e50a2ef4c6980b61503232912&q=${location}&aqi=no`)
+            .then(res => res.json())
+            .then((res) => updateWeather(res))
+            .catch(function(e){
+                console.log(e);
+            })
+        };
+
+        function updateWeather(data){
+           const city1 = data.location.name;
+           const time1 = data.location.localtime;
+           const icon1 = data.current.condition.icon;
+           const condition1 = data.current.condition.text;
+           const temp1 = data.current.temp_c;
+
+           cityRef.innerText = city1;
+           dateRef.innerText = time1;
+           iconRef.src = icon1;
+           conditionRef.innerText = condition1;
+           tempRef.innerText = temp1;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+           
+        }
+        .card{
+           border: 1px solid lightgray;
+           width: 130px;
+           height: 100px;
+           margin: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>GuessGame</h1>
+
+    <div class="container">
+        <div class="card" data-color = "blue"></div>
+        <div class="card" data-color = "green"></div>
+        <div class="card" data-color = "blue"></div>
+        <div class="card" data-color = "red"></div>
+        <div class="card" data-color = "blue"></div>
+        <div class="card" data-color = "green"></div>
+        <div class="card" data-color = "red"></div>
+        <div class="card" data-color = "blue"></div>
+    </div>
+
+
+    <script>
+        // to get reference for all cards
+        const cardRef = document.querySelectorAll('.card');
+
+        cardRef.forEach((eachCard) =>{  // iterate on each card
+            eachCard.addEventListener('click', function(event){  // add event
+                const targetEleRef = event.target;  // set atrget
+                const color = targetEleRef.getAttribute('data-color'); // get color of target
+                targetEleRef.style.backgroundColor = color;  // style the target 
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Asynchronous Behaviour</h1>
+
+    <!-- Async :
+        it will execute line by line, but if we put setTimeout of specific
+        time it will run after that particular time.
+        timeOut function  will run after that specific time, next code will execute in that place.
+        if next code takes more time lets say 20 sec, it will stay in queue till code of execution gets completed.
+        it will wait till execute & when stack empty it enters and execute
+        => event loop did this.
+     -->
+
+    <script>
+        console.log('1');
+
+        console.log('2');
+
+        setTimeout(()=>{
+            console.log('3');
+        }, 1000);
+
+        for(var i = 10; i < 15; i++){
+            console.log(i);
+        }
+
+        console.log('4');
+
+        // 1 2 [10 11 12 13 14] 4 3
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .progress-bar{
+            width: 50%;
+            border: 1px solid black;
+            margin: auto;
+            padding: 5px;
+        }
+        .bar{
+            background-color: green;
+            height: 20px;
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Progress Bar</h1>
+    <div class="progress-bar">
+        <div class="bar" style="width: 10%;"></div>
+    </div>
+
+    <script>
+
+        const counterRef = setInterval(function(){
+            const bar = document.querySelector('.bar');
+            const currentWidth = bar.style.width.split('%')[0];
+            const newWidth = `${Number(currentWidth) + 10}%`;
+
+            if(Number(currentWidth) < 100){
+                bar.style.width = newWidth;
+            }
+            else{
+                clearInterval(counterRef);
+            }
+        },1000);
+        
+    </script>
+</body>
+</html>

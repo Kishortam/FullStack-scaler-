@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- script should be written below HTML content
+        so can we read and get elements from HTML Document.
+     -->
+</head>
+<body>
+    <div>
+        <h1 id="heading">Heading of List</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum culpa et dolores mollitia, provident quae voluptatem iste dolorum non voluptate.</p>
+
+        <ul>
+        <li class="item">One</li>
+        <li class="item">Two</li>
+        <li class="item">Three</li>
+        </ul>
+    </div>
+
+    <script>
+
+        // take reference of elements
+
+        // read elements using reference of attributes and print in console
+        const head = document.getElementById('heading');
+        console.log(head.textContent); // to read content
+
+        const para = document.getElementsByTagName('p');
+        console.log(para);  // get referance of that element
+
+        const listRef = document.getElementsByClassName('item');
+        console.log(listRef)
+
+        const liRef = document.querySelector('ul li');
+        console.log(liRef)
+
+        // const liRef = document.querySelector('ul li:nth-child(2)');
+        // console.log(liRef)
+        
+        
+
+
+
+
+
+        /*
+        const headingRef = document.getElementById('heading');
+        console.log(headingRef);
+
+        const itemsRef = document.getElementsByClassName('item');
+        console.log(itemsRef);
+
+        const pRef = document.getElementsByTagName('p');
+        console.log(pRef);
+
+        const liRef = document.querySelector('ul li');
+        console.log(liRef);
+    */
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Throttle</h1>
+
+    <!-- throttle will consistently in given time 
+    it will print data every 2 sec contionously.
+    if data is no there, it will stop.
+-->
+
+    <input type="text" name="" id="">
+
+    <script>
+        function throttle(fn, delay){
+            let timeoutRef;
+            let flag = true;
+            return function(e){
+                clearTimeout(timeoutRef);
+                if(flag){
+                    flag = false;
+                    setTimeout(() => {
+                        fn(e);
+                        flag = true
+                    }, delay);
+                }
+            }
+        }
+
+        const inputRef = document.querySelector('input');
+
+        const fn = function(e){
+            console.log(e.target.value);
+        }
+
+        const throttleFn = throttle(fn, 1000);
+
+        inputRef.addEventListener('keyup', throttleFn);
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .otp{
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+        .otp input{
+            width: 30px;
+            height: 40px;
+            border: none;
+            border-bottom: 2px solid blueviolet;
+            border-right: 2px solid blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <h2>enter OTP</h2>
+    <div class="otp">
+        <input class="input" type="number" inputmode="numeric" maxlength="1">
+        <input class="input" type="number" inputmode="numeric" maxlength="1">
+        <input class="input" type="number" inputmode="numeric" maxlength="1">
+        <input class="input" type="number" inputmode="numeric" maxlength="1">
+        <input class="input" type="number" inputmode="numeric" maxlength="1">
+    </div>
+
+    <script>
+        const inputRef = document.querySelectorAll('.otp input');
+
+        // to go to next input box automatically
+       inputRef.forEach((otpValue)=>{
+        otpValue.addEventListener('keyup', function(e){
+            if(e.target.value && !isNaN(Number(e.target.value))){
+                e.target.nextElementSibling?.focus();
+            }
+        })
+       })
+
+       // to go to previous input box on clicking backspace or delete
+       inputRef.forEach((otpValue)=>{
+        otpValue.addEventListener('keydown', function(e){
+            if(e.key == "delete" || e.key == "Backspace"){
+                if(!e.target.value){
+                    e.target.previousElementSibling?.focus();
+                }
+            }
+        })
+       })
+
+    </script>
+</body>
+</html>

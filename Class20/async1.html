@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Async with timeOut</h1>
+<!--  it will run line by line but if we have setTimeout function
+the function execute after specific time till next code executes.
+in timeout who has less timeout period will execute first.
+if two has same timeOut, then order comes in picture
+
+=> 0 timeout means there is no number of seconds
+-->
+    <script>
+        console.log('1');
+        console.log('2');
+        setTimeout(()=>{
+            console.log('3');
+        },3000);
+        setTimeout(()=>{
+            console.log('4');
+        },1000);
+        setTimeout(()=>{
+            console.log('5');
+        },0);
+        setTimeout(()=>{
+            console.log('6');
+        });
+        console.log('7');
+        
+        // 1 2 7 5 6 4 3
+
+
+        // another example
+        
+        /*
+        console.log('1');
+
+        console.log('2');
+
+        setTimeout(()=>{
+            console.log('3');
+        }, 3000);
+
+        setTimeout(()=>{
+            console.log('4');
+        }, 1000);
+
+        console.log('5');
+
+        // 1 2 5 4 3
+*/   
+    </script>
+</body>
+</html>

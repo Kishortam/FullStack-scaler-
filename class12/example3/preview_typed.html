@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: aqua;
+            border-radius: 10px;
+            width: 200px;
+            padding: 20px;
+        }
+        h3{
+            font-family: arial;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="">Enter Name :</label>
+        <input type="text" name="username" class="username" placeholder="enter your name"> <br>
+        <h3><span class="show"></span></h3>
+    </div>
+
+    <script>
+        const userRef = document.getElementsByClassName('username')[0];
+
+        // userRef.addEventListener('keyup', function(e){
+        //     console.log(e.target.value);
+
+        //     if(e.key === 'Enter'){
+        //         const preview = document.querySelector('.show');
+        //         preview.innerText = e.target.value;
+        //     }
+        // });
+
+        userRef.addEventListener('keyup', function(e){
+            if(e.key === 'Enter'){
+                const prevRef = document.querySelector('.show');
+                prevRef.innerText = e.target.value;
+            }
+        })
+    </script>
+</body>
+</html>

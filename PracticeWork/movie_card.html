@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .movies{
+            background-color: pink;
+            padding: 10px;
+            margin: 7px;
+            width: 150px;
+            height: 100px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .options{
+            margin: 10px auto;
+            /* border: 2px solid pink; */
+            text-align: center;
+        }
+        select{
+            width: 150px;
+            height: 25px;
+            background-color: antiquewhite;
+            text-align: center;
+            border: none;
+            border-bottom: 2px solid palevioletred;
+            border-radius: 7px;
+        }
+        h1{
+            background-color: blueviolet;
+            color: white;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Book My show</h1>
+
+   <div class="options">
+    <select name="dropdown" id="dropdown">
+        <option value="none">none</option>
+        <option value="action">action</option>
+        <option value="comedy">comedy</option>
+        <option value="romance">romance</option>
+    </select>
+   </div>
+
+    <div class="container">
+
+        <div class="movies">
+            <h3 class="heading">Action -1</h3>
+            <p class="price" data-category = "action">WAR</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action -2</h3>
+            <p class="price" data-category = "action">PATHAN</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action -3</h3>
+            <p class="price" data-category = "action">TIGER</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance-1</h3>
+            <p class="price" data-category = "romance">SATYA PREM KI KATHA</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance-2</h3>
+            <p class="price" data-category = "romance">ROCKY & RANI</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance-3</h3>
+            <p class="price" data-category = "romance">YAARIYAN 2</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action -4</h3>
+            <p class="price" data-category = "action">JAWAN</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Comedy -1</h3>
+            <p class="price" data-category = "comedy">OMG 2</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance -4</h3>
+            <p class="price" data-category = "romance">JAB TAK HE JAAN</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Comedy -2</h3>
+            <p class="price" data-category = "comedy">DHOL</p>
+        </div>
+    </div>
+
+    <script>
+        const selectRef = document.querySelector('select');
+
+        selectRef.addEventListener('change', function(e){
+            // console.log(e.target.value);
+            movieGenre(e.target.value);
+        })
+
+        function movieGenre(film){
+            const pRef = document.querySelectorAll('p.price');
+
+            pRef.forEach((title)=>{
+                const category = title.getAttribute('data-category');
+
+                title.parentElement.style.display = 'block';
+
+                if(film !== category){
+                    title.parentElement.style.display = 'none';
+                }
+            })
+        }
+    </script>
+
+
+</body>
+</html>

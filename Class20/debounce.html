@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Debounce</h1>
+    <!--  
+        when we set time out for specific time, if we type continously and we take a pause of that specific time, it will result a typed data till that time.
+     -->
+
+    <input type="text" name="" id="">
+    <!-- set timeOut will use here
+    after a specific time it will give u a result
+    -->
+
+    <script>
+
+        function debounce(fn, delay){
+            let timeoutRef;
+            return function(e){
+                clearTimeout(timeoutRef);
+               timeoutRef = setTimeout(()=>{
+                    fn(e);
+                }, delay);
+            }
+        }
+
+        const inputRef = document.querySelector('input');
+
+        const fn = function(e){
+            console.log(e.target.value);
+        }
+
+        const debouncedFn = debounce(fn, 1000);
+
+        inputRef.addEventListener('keyup', debouncedFn);
+
+        // in this, if we stopped typing for specific time, it will log typed data
+        
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .movies{
+            width: 250px;
+            background-color: rgb(220, 239, 49);
+            text-align: center;
+            margin: 8px;
+        }
+        .heading{
+            background-color: skyblue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Book My Show</h1>
+
+        <select name="dropdown" id="dropdown">
+            <option value="none">none</option>
+            <option value="action">action</option>
+            <option value="comedy">comedy</option>
+            <option value="romance">romance</option>
+        </select>
+
+    <div class="container">
+
+        <div class="movies">
+            <h3 class="heading">Action -1</h3>
+            <p class="price" data-category = "action">WAR</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action -2</h3>
+            <p class="price" data-category = "action">PATHAN</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action -3</h3>
+            <p class="price" data-category = "action">TIGER</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance-1</h3>
+            <p class="price" data-category = "romance">SATYA PREM KI KATHA</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance-2</h3>
+            <p class="price" data-category = "romance">ROCKY & RANI</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance-3</h3>
+            <p class="price" data-category = "romance">YAARIYAN 2</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Action -4</h3>
+            <p class="price" data-category = "action">JAWAN</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Comedy -1</h3>
+            <p class="price" data-category = "comedy">OMG 2</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Romance -4</h3>
+            <p class="price" data-category = "romance">JAB TAK HE JAAN</p>
+        </div>
+        <div class="movies">
+            <h3 class="heading">Comedy -2</h3>
+            <p class="price" data-category = "comedy">DHOL</p>
+        </div>
+    </div>
+
+
+
+    <script>
+        // it should show selected genre movies
+
+        // 1. take a refernce of select dropdown 
+        const selectRef = document.querySelector('select');
+        // 2. add event listner on it when we select or change a value
+        selectRef.addEventListener('change', function(event){
+            console.log(event.target.value); // get a value of selected option
+            filterCard(event.target.value);  // call function for genre name
+        });
+
+        // 3. creating a function
+        function filterCard(filterName){
+            // taking reference of element, where attribute present
+            const priceRef = document.querySelectorAll('p.price');
+            //console.log(priceRef);
+
+            // takin reference of class and will iterate oneach with same class
+            priceRef.forEach((priceEach)=>{
+                const category = priceEach.getAttribute('data-category');
+                // make it block display so we can see again again
+                priceEach.parentElement.style.display = 'block';
+
+                // if selected value from dropdown matches with category then make others display none.
+                if(filterName !== category){
+                    //console.log(priceEach)
+                    priceEach.parentElement.style.display = 'none';
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>

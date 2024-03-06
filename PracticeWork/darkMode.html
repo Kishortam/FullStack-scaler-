@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 300px;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>See The Change</h1>
+        <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis quas suscipit ipsa exercitationem ab inventore excepturi porro magni consectetur!</p>
+        <button id="but1">click to change a text</button>
+        <button id="but2">Dark Mode</button>
+    </div>
+
+    <script>
+        const but1Ref = document.querySelector('#but1');
+        but1Ref.addEventListener('click', function(e){
+            const pRef = document.querySelector('.para');
+            pRef.innerText = "This is a new india with great privilage."
+        })
+
+        const but2Ref = document.querySelector('#but2');
+        but2Ref.addEventListener('click', function(e){
+            const contRef = document.querySelector('div');
+            contRef.style.backgroundColor = 'black';
+            contRef.style.color = 'white';
+            
+        })
+    </script>
+</body>
+</html>

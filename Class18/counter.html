@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .counter-wrapper{
+            width: 400px;
+            margin: 30px auto;
+            background-color: coral;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-wrapper">
+        <h1>Counter</h1>
+        <div class="result">0</div>
+        <div class="delta">
+            <span>Increment / Decrement by</span>
+            <input type="number" placeholder="put delta" value="1">
+        </div>
+        <div class="action">
+            <button>+</button>
+            <button>-</button>
+        </div>
+        <div class="reset">
+            <button>Reset</button>
+        </div>
+    </div>
+
+
+    <script>
+        
+        // data:
+        // Dom
+        // Ref: 
+        //> of result 
+        const resultRef = document.querySelector('.result');
+        //> delta
+        const inputRef = document.querySelector('.delta input');
+        //> +
+        const plusRef = document.querySelector('.action button:nth-child(1)');
+        //> - 
+        const minusRef = document.querySelector('.action button:nth-child(2)');
+        //> reset
+        const resetRef = document.querySelector('.reset button');
+
+        // JS In-memory > count
+        let count = 0;
+        let delta = 1;
+
+        // Methods :
+        // addEventListner();
+        function addListeners(){
+            inputRef.addEventListener('change', function(e){
+                delta = Number(e.target.value);
+            })
+
+            plusRef.addEventListener('click', function(e){
+                increment();
+            })
+
+            minusRef.addEventListener('click', function(e){
+                decrement();
+            })
+
+            resetRef.addEventListener('click', function(e){
+                resetFn();
+            })
+        }
+
+
+        // increment();
+        function increment(){
+            count += delta;
+            updateResult();
+        }
+        // decrement();
+        function decrement(){
+            count -= delta;
+            updateResult();
+        }
+        // reset();
+        function resetFn(){
+            count = 0;
+            updateResult();
+        }
+        //updateResult();
+        function updateResult(){
+            resultRef.innerText = count;
+        }
+
+        addListeners();
+    </script>
+</body>
+</html>

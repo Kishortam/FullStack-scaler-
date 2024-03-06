@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    window with strict mode
+
+    <script>
+        'use strict';
+
+
+        console.log('1', this);
+        // 'this' points to global window object
+
+
+        function test(){
+        console.log('2', this);
+        }
+        test();
+        // undefined
+
+
+
+        let obj = {
+                name : "Atul",
+                age : 60,
+                getThis: function(){
+                console.log(this);
+                }
+         }
+
+        obj.getThis();
+        // results whole object
+
+
+
+        // assigning same function name to new variable
+        const getThisFn = obj.getThis;
+        getThisFn();
+        // undefined
+    </script>
+</body>
+</html>

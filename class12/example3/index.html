@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Key Up & Key Down -->
+    <div>
+        <div>
+            <input class="username" type="text" name ="username" placeholder="enter name"/>
+            <span class="preview"></span>
+        </div>
+    </div>
+
+    <script>
+
+        // Q. we want, when we clicked enter key it should show preview of typed word
+
+
+        const userRef = document.getElementsByClassName('username')[0];
+        //keyUp
+        userRef.addEventListener('keyup', function(event){
+            // console.log(event.target.value); // see type each characters
+            console.log(event.key); // to get key value of what we have press in console
+
+            if(event.key === "Enter"){
+                const prevRef = document.querySelector('.preview');
+                prevRef.innerText = event.target.value;
+            }
+        });
+
+        // keyDown
+        /*
+        userRef.addEventListener('keyup', function(event){
+            console.log(event.target.value);
+        })
+        */
+    </script>
+</body>
+</html>

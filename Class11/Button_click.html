@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 style="color: red;">Some details here</h1>
+    <button>Click Here!</button>
+
+    <button class="makeit">Make Browser Dark</button>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis reprehenderit, sit quae voluptatibus aspernatur alias in? Libero aut accusantium vitae nulla rerum quia alias nemo illo eveniet officia, voluptatibus ipsa?</p>
+
+
+    <!--  practice  -->
+
+    <div style="width: 300px; border: 1px solid lightblue; padding: 5px;">
+        <p id="para">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam laborum obcaecati recusandae mollitia harum,
+        laboriosam odit? Autem, molestias corporis labore pariatur eveniet error. Dolores, atque illo iusto blanditiis
+        dignissimos incidunt?
+        </p>
+
+        <button id="but1">click here to change text</button>
+        <button id="but2">Dark Mode</button>
+    </div>
+
+
+
+
+
+
+    <script>
+
+        // change text of paragraph
+
+        // 1. take button reference
+        const but = document.getElementById('but1');
+        // 2. add event on button reference
+        but.addEventListener('click', function(event){
+            console.log(event);
+            // 3. take refernce of paragraph to change it
+            const paragr = document.getElementById('para');
+            // 4. update text of paragraph
+            paragr.innerText = "here we have change our text"
+
+        });
+
+        // dark mode
+        // 1. take button reference which we are going to click
+        const butt = document.getElementById('but2');
+        // 2. add event
+        butt.addEventListener('click', function(event){
+            // 3. take reference of element which we want to update
+            const pRef = document.querySelector('div');
+            // 4. update style
+            pRef.style.backgroundColor = 'black';
+            pRef.style.color = 'white';
+        })
+
+
+
+
+
+
+
+
+        const butRef = document.getElementsByTagName('button')[0];
+        
+        butRef.addEventListener('click', function(event){
+            console.log(event);
+            // to read content of h1
+            const h1Ref = document.querySelector('h1');
+            //console.log(h1Ref.innerText);  // to read
+            window.alert(h1Ref.innerText); // to alert 
+            window.alert(h1Ref.innerHTML); // works on elements in elements
+
+            // using reference we can change text of element
+            h1Ref.innerText = "Hello, Welcome to Browswer."
+        });
+
+
+
+
+        // to change style of reference element on button click
+        const makeitRef = document.querySelector('.makeit');
+
+        makeitRef.addEventListener('click', function(event){
+            const h1Ref = document.querySelector('h1');
+            console.log(h1Ref.style.color);
+            h1Ref.style.color = 'green';
+            h1Ref.style.fontFamily = 'arial';
+            h1Ref.style.textDecoration = 'underline';
+
+
+             // to change bg-color & text-color of body
+            const bodyDark = document.getElementsByTagName('body')[0];
+            bodyDark.style.backgroundColor = "black";
+            bodyDark.style.color = 'white';
+        });
+
+
+
+
+    </script>
+</body>
+</html>

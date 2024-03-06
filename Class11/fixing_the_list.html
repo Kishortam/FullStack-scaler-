@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listing1</h1>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+
+    <!-- practice :  add missing elements -->
+    <h1>Listing2</h1>
+    <ol>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>e</li>
+        <li>f</li>
+        <li>h</li>
+        <li>i</li>
+        <li>j</li>
+        <li>k</li>
+    </ol>
+
+    <script>
+        // insert 7 before 8 in the list
+
+        // 1. creating a element numbered 7
+        const liRef = document.createElement('li');
+        liRef.innerText = 7;
+        // 2. inserting in ul
+        const ulRef = document.querySelector('ul');
+        // 3. taking reference of 7,to add before it
+        const eightRef = document.querySelector('ul li:nth-child(7)');
+        console.log(eightRef);
+        // 4. adding in ul, before 8
+        ulRef.insertBefore(liRef, eightRef);
+
+
+
+        // insert a element at end
+        const endRef = document.createElement('li');
+        endRef.innerText = 11;
+        console.log(endRef);
+        ulRef.appendChild(endRef);
+
+
+
+        // practice
+
+        // insert missing d & g
+
+        // 1. create an element
+        const dRef = document.createElement('li');
+        dRef.innerText = 'd';
+
+        const gRef = document.createElement('li');
+        gRef.innerText = 'g';
+
+        // 2. take reference of mainList
+        const olRef = document.querySelector('ol');
+        // 3. select child number,to get move 
+        const beforeRef = document.querySelector('ol li:nth-child(4)');
+        // 4. insert an element
+        olRef.insertBefore(dRef, beforeRef);
+
+        const before1 = document.querySelector('ol li:nth-child(7)');
+        olRef.insertBefore(gRef, before1);
+
+
+        // insert an element at last
+        const alphaRef = document.createElement('li');
+        alphaRef.innerText = 'l';
+        olRef.appendChild(alphaRef);
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

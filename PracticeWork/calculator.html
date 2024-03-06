@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" name="" id="num1">
+    x
+    <input type="number" name="" id="num2">
+    = 
+    <span id="result">8</span>
+
+    <script>
+        // const num1Ref = document.getElementById('num1');
+        // const num2Ref = document.getElementById('num2');
+        // const resulRef = document.getElementById('result');
+
+        // function updateResult(){
+        //     const val1 = num1Ref.value;
+        //     const val2 = num2Ref.value;
+        //     resulRef.innerText = val1 * val2;
+        // }
+
+        // num1Ref.addEventListener('change', function(e){
+        //     updateResult();
+        // })
+        // num2Ref.addEventListener('change', function(e){
+        //     updateResult();
+        // })
+
+        const num1Ref = document.getElementById('num1');
+        const num2Ref = document.getElementById('num2');
+        const resulRef = document.getElementById('result');
+
+        function updateResult(){
+            const num1 = num1Ref.value;
+            const num2 = num2Ref.value;
+            resulRef.innerText = num1 * num2;
+        }
+
+        num1Ref.addEventListener('change', function(e) {
+            updateResult();
+        })
+        num2Ref.addEventListener('change', function(e) {
+            updateResult();
+        })
+
+    </script>
+
+</body>
+</html>

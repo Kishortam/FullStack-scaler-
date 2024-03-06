@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .comment-wrapper{
+            padding: 10px;
+        } */
+        .comment-detail{
+            background-color: bisque;
+            padding: 5px 15px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .reply-box a{
+            margin: 5px 0;
+        }
+        .comment-reply{
+            padding-left: 50px;
+        }
+        .comment-form{
+            margin: 10px 0;
+        }
+        .comment-form input{
+            border-radius: 5px;
+            height: 30px;
+            padding: 0 10px;
+        }
+        .comment-form button{
+            border-radius: 5px;
+            background-color: rgb(203, 131, 131);
+            color: white;
+            height: 35px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="comment-wrappper">
+        <div class="comment-box">
+            <div class="comment-detail">
+                <h3>You : Good Morning</h3>
+                <a href="#"> Reply here</a>
+            </div>
+            <div class="comment-reply"></div>
+        </div>
+    </div>
+
+    <script>
+        function createReplyBox(ref, reply){
+            const replyBoxRef = document.createElement('div');
+            replyBoxRef.className = 'reply-box';
+            replyBoxRef.innerHTML = `
+            <div class="comment-form">
+                <input place-holder="write your reply" /input>
+                <button> send</button>
+            </div>
+            <div class="comment-reply"></div>
+            `;
+            ref.appendChild(createReplyBox);
+        }
+    </script>
+</body>
+</html>

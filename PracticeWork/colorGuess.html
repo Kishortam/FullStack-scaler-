@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .card{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" data-color="pink"></div>
+        <div class="card" data-color="maroon"></div>
+        <div class="card" data-color="skyblue"></div>
+        <div class="card" data-color="pink"></div>
+        <div class="card" data-color="skyblue"></div>
+        <div class="card" data-color="pink"></div>
+        <div class="card" data-color="skyblue"></div>
+        <div class="card" data-color="maroon"></div>
+    </div>
+
+    <script>
+        // const cardRef = document.querySelectorAll('.card');
+        // cardRef.forEach((eachCard)=>{
+        //     eachCard.addEventListener('click', function(e){
+        //         const targetEle = e.target;
+        //         const colorRef = targetEle.getAttribute('data-color');
+        //         targetEle.style.backgroundColor = colorRef;
+        //     })
+        // })
+
+        const cardRef = document.querySelectorAll('.card');
+
+        cardRef.forEach((eachCard)=>{
+            eachCard.addEventListener('click', function(e){
+                const targetEle = e.target;
+                const color = targetEle.getAttribute('data-color');
+                targetEle.style.backgroundColor = color;
+            })
+        })
+    </script>
+</body>
+</html>

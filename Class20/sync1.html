@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sync1 with functions</h1>
+
+    <script>
+        function getTotal(a,b,c){
+            return  a + b + c;
+        }
+        function sum(a,b,c){
+            return getTotal(a,b,c);
+        }
+        function print(data){
+            console.log(data);
+        }
+        print(sum(1,2,3));
+
+        print("Hi");
+    </script>
+
+    <!-- 
+        in this, execution will run line by line, if function comes in between it will execute it first
+        and then next code of line will execute.
+     -->
+</body>
+</html>

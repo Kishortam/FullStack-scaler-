@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        .light{
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button id="mode">click me!</button>
+
+    <script>
+        const butnRef = document.querySelector('#mode');
+        const bodyref = document.querySelector('body');
+        let mode = "light";
+
+        butnRef.addEventListener('click', function(e){
+            if(mode === 'light'){
+                mode = 'dark'
+                bodyref.classList.add('dark');
+                bodyref.classList.remove('light');
+            }
+            else{
+                mode = 'light'
+                bodyref.classList.add('light');
+                bodyref.classList.remove('dark');
+            }
+        })
+    </script>
+</body>
+</html>
