@@ -48,6 +48,8 @@ function upper(froot){
 console.log(upper(fruit));
 
 
+
+
 // using forEach
 
 function upper2(froot){

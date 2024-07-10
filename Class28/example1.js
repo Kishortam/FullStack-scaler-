@@ -45,11 +45,11 @@ var sum = function(a,b){
 
 
 // Q.8
-console.log(total);
+    console.log(total);
 
-let total = function(a,b){
-    returna + b;
-}
+    let total = function(a,b){
+        return a + b;
+    }
 // error : let will not do hoisting, since its in TDZ it will not execute
 // total is not defined before calling a function
 

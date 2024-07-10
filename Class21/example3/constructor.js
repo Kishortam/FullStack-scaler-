@@ -84,7 +84,7 @@ function Person(name, age, location, salary){
     this.location = location;
     this.salary = salary;
     this.getDetails = function(){
-        return  `my name is ${this.name} & salary={} is ${this.salary}, working at ${this.location}.`;
+        return  `my name is ${this.name} & salary is ${this.salary}, working at ${this.location}.`;
     }
 }
 

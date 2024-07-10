@@ -1,5 +1,5 @@
 // Q.1
-// create an animation function ContAnimation that continously chabge the background color
+// create an animation function ContAnimation that continously change the background color
 // of an element between red and blue. the function should take the elements ID as an argument
 // and update the background color every 500 ms.
 

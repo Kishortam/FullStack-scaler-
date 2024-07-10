@@ -41,9 +41,9 @@ var l = {name : 'Nirmal'};
 var m = {name : 'Satish'};
 var tmp;
 
-tmp = l;
-l = m;
-m = tmp;
+tmp = l; // nirmal
+l = m; // satish
+m = tmp; // nirmal
 
 console.log(l,m); // satish nirmal
 

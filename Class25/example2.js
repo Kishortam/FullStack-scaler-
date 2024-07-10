@@ -51,3 +51,23 @@ new Promise((resolve, reject) => {
 
 
 
+
+new Promise((resolve, reject)=>{
+    var tvPrice = 24000;
+    var budget = 30000;
+
+    if(tvPrice < budget){
+        resolve('we will buy');
+    }
+    else{
+        reject('not affordable');
+    }
+})
+.then((data)=>{
+    console.log('yay >>', data);
+})
+.catch((err) =>{
+    console.log('oops >>', err);
+})
+
+

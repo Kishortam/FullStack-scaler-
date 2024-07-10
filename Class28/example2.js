@@ -31,3 +31,29 @@ vatanCounter(); // 3
 
 const vinethaCounter = createCounter();
 vinethaCounter(); // 1
+
+
+
+//----------------------
+
+function myPromiseall(taskList){
+    const result = [];
+
+    let completed = 0;
+
+    return new Promise((resolve, reject)=>{
+        taskList.forEach((promise, index)=>{
+            promise.then((val)=>{
+                result[index] = val;
+                completed += 1;
+
+                if(completed === taskList.length){
+                    resolve(result);
+                }
+            })
+            .catch(error =>
+                reject(error)
+            )
+        })
+    })
+}

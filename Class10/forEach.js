@@ -35,3 +35,13 @@ console.log(getTotalBillAmount1(bills.slice()));
 //     return total;
 // }
 // console.log(getTotalBillAmount(bill));
+
+
+const getTotalBillAmount2 = (items) =>{
+    let total = 0;
+
+    items.forEach((item, index)=>{
+        total = total + item;
+    })
+    return total;
+}

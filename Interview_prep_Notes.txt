@@ -1,0 +1,307 @@
+
+1. What is JS?
+=> JavaScript is a scripting or programming language that allows you to implement complex features on web pages.
+=> JavaScript is a programming language that adds interactivity to your website.
+=> It was invented by Brendan Eich.
+=> When the browser encounters a block of JavaScript, it generally runs it in order, from top to bottom.
+=> JS is single threaded.
+
+
+2. JS Hoisting
+=> Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
+=> JavaScript only hoists declarations, not initializations.
+=> a variable can be used before it has been declared.
+=> Variables defined with let and const are hoisted to the top of the block, but not initialized.
+=> Using a const variable before it is declared, is a syntax error, so the code will not run.
+=> Using a let variable before it is declared will result in a ReferenceError. The variable is in a "temporal dead zone" from the start of the block until it is declared.
+
+
+
+3. TDZ 
+=> The temporal dead zone (TDZ) is a specific period in the execution of JavaScript code where variables declared with let and const exist
+ but cannot be accessed or assigned any value. During this phase, accessing or using the variable will result in a ReferenceError. 
+=> the term to describe the state where variables are un-reachable. They are in scope, but they aren't declared.
+=> The let and const variables exist in the TDZ from the start of their enclosing scope until they are declared.
+=> The TDZ ensures that variables are accessed only after they have been properly declared and initialized.
+=> TDZ does not apply to var variables.
+
+4. Currying 
+=> currying is a functional programming technique that involves breaking down a function that takes multiple arguments into a series of functions
+ that take one argument each. This creates a chain of functions, where each function returns another function until the final result is achieved.
+=> It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence. 
+=> An American mathematician named Haskell Curry developed this technique, that’s why it is called currying.
+=> We simply wrap a function inside a function, which means we are going to return a function from another function to obtain this kind of translation.
+ The parent function takes the first provided argument and returns the function that takes the next argument and this keeps on repeating till the number of arguments ends.
+  Hopefully, the function that receives the last argument returns the expected result.  
+=> It helps us to create a higher-order function, It reduces the chances of error in our function by dividing it into multiple smaller functions that can handle one responsibility.
+=> It helps us to avoid passing the same variable multiple times, It makes the code more readable.
+
+function calculateVolume(length) {
+    return function (breadth) {
+        return function (height) {
+            return length * breadth * height;
+        }
+    }
+}
+console.log(calculateVolume(4)(5)(6));
+
+
+
+5. Infinite Currying code
+=> As we can see here that this function will go on till a particular condition and what this particular condition is?
+ We will break the recursion when we see that there is no more argument to the function call. 
+ We will return the sum when we make the call with no more arguments
+i.e. on the last ().
+Otherwise, we will keep returning a function that will expect us to make a call with one more argument.
+=> code:
+
+function sum(a) {
+  return function(b){
+    if(!b){
+        return a;
+    }
+    return sum(a+b);
+  }
+}
+console.log(sum(1)(2)(3)(4)(5)(6)());  //21
+
+
+
+
+6. Closures
+=> JavaScript closure is a feature that allows inner functions to access the outer scope of a function. 
+=> A function scope’s ability to access variables from the parent scope is known as lexical scope.
+
+function outer(){
+    var x = 10;
+    function inner(){
+        console.log(x);
+    }
+    return inner;
+}
+
+var closureFunc = outer();
+closureFunc();
+----
+
+function sum(outer_arg) {
+    function inner(inner_arg) {
+        return outer_arg + inner_arg;
+    }
+    return inner;
+}
+let result = sum(5);
+ 
+console.log(result(4));
+console.log(result(3));
+
+
+
+
+
+
+7. Shallow Copy (https://www.javatpoint.com/shallow-copy-and-deep-copy-in-javascript)
+=> In JavaScript, there are two ways to copy objects: Shallow copy and Deep copy. 
+=> A shallow copy is a copy that only goes one level deep. 
+In other words, it copies the object and all its properties, but any nested objects or arrays will still reference the same memory location as the original object.
+ It means that if you make changes to the nested object, it will also affect the original object, as well as the copied object.
+
+const originalObject = { a: 1, b: { c: 2 } };  
+const shallowCopy = { ...originalObject };  
+
+shallowCopy.a = 3; // Changes shallowCopy, but not originalObject  
+shallowCopy.b.c = 4; // Changes both shallowCopy and originalObject 
+
+
+
+
+8. Deep Copy 
+=> A deep copy is a copy that creates a new object with new memory locations for all of its properties and nested objects or arrays.
+ It means that if you make changes to the copied object or any of its nested objects or arrays, it will not affect the original object.
+
+const originalObject = { a: 1, b: { c: 2 } };  
+const deepCopy = JSON.parse(JSON.stringify(originalObject));
+
+deepCopy.a = 3; // Changes deepCopy, but not originalObject  
+deepCopy.b.c = 4; // Changes deepCopy, but not originalObject 
+
+
+=> In JavaScript, there are two ways to copy objects: shallow copy and deep copy.
+Shallow copying creates a new object with references to the same memory locations as the original object, 
+while deep copying creates a new object with new memory locations for all of its properties and nested objects or arrays.
+
+Shallow copying can be more efficient in terms of performance, but may result in unexpected behavior if changes to a copied object affect the original object.
+Deep copying ensures that changes to a copied object do not affect the original object, but may be more expensive in terms of performance.
+
+While using JSON.parse() and JSON.stringify() is an easy way to create a deep copy of an object,
+it may not work in all cases. However, if the object being copied contains functions or circular references, a recursive deep copy function may be necessary.
+
+
+
+
+9. PolyFill (https://medium.com/nerd-for-tech/polyfill-for-array-map-filter-and-reduce-e3e637e0d73b) (usually JavaScript on the Web)           
+=> A polyfill is a piece of code used to provide modern functionality on older browsers that do not natively support it.
+=> The polyfill uses non-standard features in a certain browser to give JavaScript a standards-compliant way to access the feature.
+
+
+
+
+=> PolyFill for map
+Array.prototype.myMap = function(callbackFn) {
+  var arr = [];              
+  for (var i = 0; i < this.length; i++) { 
+     /* call the callback function for every value of this array and       
+     push the returned value into our resulting array
+     */
+    arr.push(callbackFn(this[i], i, this));
+  }
+  return arr;
+}
+
+
+=> PolyFill for forEach
+
+if(!Array.prototype.myForEach){
+    Array.prototype.myForEach = function(callback){
+        // implement a logic of forEach // it takes a callback function
+        const length = this.length;
+        // iterate through all items
+        for(var i = 0; i < length; i++){
+            // execute a callback
+            callback(this[i], i, this);
+        }
+    }
+}
+
+// to print => [1,2,3,4,5].myForEach(item => console.log(item));
+
+
+
+=> PolyFill for filter
+// polyfill for filter
+if(!Array.prototype.myFilter){
+    Array.prototype.myFilter = function(callback){
+        // implement logic for filter
+
+        // create an empty  output array
+        const output = [];
+
+        // iterate
+        for(var i = 0; i < this.length; i++){
+            // check if condition is met or not
+            const isTrue = callback(this[i], i, this);
+
+            if(isTrue){
+                output.push(this[i]);
+            }
+        }
+        return output;
+    }
+}
+
+--
+Array.prototype.myFilter = function(callbackFn) {
+  var arr = [];     
+  for (var i = 0; i < this.length; i++) {
+    if (callbackFn.call(this, this[i], i, this)) {
+      arr.push(this[i]);
+    }
+  }
+  return arr;
+}
+--
+
+
+=> PolyFill for reduce
+if(!Array.prototype.myReduce){
+    Array.prototype.myReduce = function(cb, initialValue){
+        let accumulator = initialValue;
+
+        for(let i = 0; i < this.length; i++){
+            accumulator = cb.call(accumulator, this[i], i, this);
+        }
+        return accumulator;
+    }
+}
+--
+Array.prototype.myReduce= function(callbackFn, initialValue) {
+  var accumulator = initialValue;
+for (var i = 0; i < this.length; i++) {
+    if (accumulator !== undefined) {
+      accumulator = callbackFn.call(undefined, accumulator, this[i],   i, this);
+    } else {
+      accumulator = this[i];
+    }
+  }
+  return accumulator;
+}
+
+
+
+10. PolyFill for Promise.all()  (https://parthasarma.hashnode.dev/promiseall-and-its-polyfill)
+=> Promise.all() takes an array of promises (values too) as input and it returns a single Promise.
+const promiseAll = Promise.all([promise1, promise2, promise3...])
+
+=> The Promise.all() accepts an array of promises and returns a promise that resolves when all of the promises in the array are fulfilled
+ or when the iterable contains no promises. the first promise that rejects It rejects with the reason.
+
+function myPromiseAll(taskList) {
+  //to store results 
+  const results = [];
+  
+  //to track how many promises have completed
+  let promisesCompleted = 0;
+
+  // return new promise
+  return new Promise((resolve, reject) => {
+
+    taskList.forEach((promise, index) => {
+     //if promise passes
+      promise.then((val) => {
+        //store its outcome and increment the count 
+        results[index] = val;
+        promisesCompleted += 1;
+        
+        //if all the promises are completed, 
+        //resolve and return the result
+        if (promisesCompleted === taskList.length) {
+          resolve(results)
+        }
+      })
+         //if any promise fails, reject.
+        .catch(error => {
+          reject(error)
+        })
+    })
+  });
+}
+
+
+
+
+
+
+11. PolyFill of deepCopy (https://sonikamaheshwari067.medium.com/javascript-deep-copy-polyfill-reliance-interview-question-6e467860cd)
+=> A deep copy means actually creating a new array and copying over the values, since whatever happens to it will never affect the origin one.
+
+const obj = {
+   a1: {
+        b1: {
+             c1: "SS"
+       }
+    }
+}
+const deepCopy = (val) => {
+   if (["string", "boolean", "number"].includes(typeof val)) {
+      return val;
+   } else if (Array.isArray(val)) {
+      return val.map(item => deepCopy(item))
+   } else {
+      return Object.keys(val).reduce((acc, key) => {
+        acc[key] = deepCopy(val[key]);
+        return acc;
+     }, {});
+  }
+  return clone
+}
+console.log(deepCopy(obj));

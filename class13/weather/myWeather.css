@@ -16,20 +16,23 @@
 }
 section{
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
 input{
     margin-right: 15px;
-    font-size: 15px;
+    font-size: 20px;
     /* border: none; */
     border: 2px solid bisque;
     border-radius: 10px;
-    padding: 10px;
+    padding: 7px;
 }
 button{
+    width: 90px;
     border-radius: 10px;
     border: 2px solid bisque;
     padding: 5px 10px;
+    font-size: 20px;
+    background-color: ;
 }
 #enterLocation{
     width: 50%;
